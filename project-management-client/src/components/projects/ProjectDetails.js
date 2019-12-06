@@ -48,7 +48,8 @@ class ProjectDetails extends Component {
       <div>
         <h1>{this.state.title}</h1>
         <p>{this.state.description}</p>
-        <div>{this.renderEditForm()} </div> // !!!
+        {/*  ↓checks if this.state has any properties (we picked title), and if that’s true, it’s invoking the getSingleProject() method which gets the project object from our API and sets it to the state of the component */}
+        <div>{this.renderEditForm()} </div>
         <Link to={"/projects"}>Back to projects</Link>
       </div>
     );
