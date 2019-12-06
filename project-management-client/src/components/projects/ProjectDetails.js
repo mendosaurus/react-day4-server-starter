@@ -43,6 +43,19 @@ class ProjectDetails extends Component {
     }
   };
 
+  // DELETE PROJECT:
+  deleteProject = () => {
+    const { params } = this.props.match;
+    axios
+      .delete(`http://localhost:5000/api/projects/${params.id}`)
+      .then(() => {
+        this.props.history.push("/projects"); // !!!
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div>
@@ -50,6 +63,10 @@ class ProjectDetails extends Component {
         <p>{this.state.description}</p>
         {/*  ↓checks if this.state has any properties (we picked title), and if that’s true, it’s invoking the getSingleProject() method which gets the project object from our API and sets it to the state of the component */}
         <div>{this.renderEditForm()} </div>
+        <button onClick={() => this.deleteProject()}>
+          Delete project
+        </button>
+        {/* <== !!! */}
         <Link to={"/projects"}>Back to projects</Link>
       </div>
     );
