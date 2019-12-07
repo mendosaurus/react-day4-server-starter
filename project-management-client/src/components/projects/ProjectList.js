@@ -27,9 +27,11 @@ class ProjectList extends Component {
     return (
       <div>
         <div style={{ width: "60%", float: "left" }}>
+          {/* use map() to list the projects (don’t forget to give each element the database ID as the key with key={project._id}); */}
           {this.state.listOfProjects.map(project => {
             return (
               <div key={project._id}>
+                {/* we use <Link /> component from react-router-dom library to be able to dynamically change URL and in our case, to go to project’s detail page (that’s our next thing to work on); */}
                 <Link to={`/projects/${project._id}`}>
                   <h3>{project.title}</h3>
                 </Link>
