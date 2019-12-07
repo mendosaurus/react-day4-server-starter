@@ -14,6 +14,7 @@ class ProjectDetails extends Component {
     this.getSingleProject();
   }
 
+  // get object from API and set it to the state of the component
   getSingleProject = () => {
     const { params } = this.props.match;
     axios
@@ -27,6 +28,7 @@ class ProjectDetails extends Component {
       });
   };
 
+  // checks if this.state has any properties (we picked title), and if that’s true, it’s invoking the getSingleProject() method which gets the project object from our API and sets it to the state of the component
   renderEditForm = () => {
     if (!this.state.title) {
       this.getSingleProject();
